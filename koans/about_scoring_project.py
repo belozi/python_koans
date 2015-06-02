@@ -34,10 +34,54 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
+    total = 0
+    ones = 0
+    twos = 0
+    threes = 0
+    fours = 0
+    fives = 0
+    sixes = 0
+    for n in dice:
+        if n == 1:
+            ones += 1
+        elif n == 2:
+            twos += 1
+        elif n == 3:
+            threes += 1
+        elif n == 4:
+            fours += 1
+        elif n == 5:
+            fives += 1
+        else:
+            sixes +=1
+        
+            
+    if ones >= 3:
+        total += 1000
+        total += 100 * (ones - 3)
+    else:
+        total += 100 * ones
+        
+    if twos >= 3:
+        total += 200
+         
+    if  threes >= 3:
+        total += 300
 
+    if fours >= 3:
+        total += 400
 
+    if fives >= 3:
+        total += 500
+        total += 50 * (fives - 3)
+    else:
+        total += fives * 50
+
+    if sixes >= 3:
+        total += 600
+
+    return total
+    
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
         self.assertEqual(0, score([]))
